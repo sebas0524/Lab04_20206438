@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista Transportistas</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+          crossorigin="anonymous">
+</head>
+<body>
+<main>
+    <div class="container px-4 py-5">
+        <form method="post" th:action="@{/index/buscarPorNombreApellido}">
+            <div class="input-group mb-3">
+                <input name="searchField" class="form-control" type="text" placeholder="Buscar por Nombre o Apellido" th:value="${textoBuscado}" >
+                <button class="btn btn-primary" type="submit">Buscar</button>
+                <a class="btn btn-outline-secondary" th:href="@{/index}">Limpiar</a>
+            </div>
+        </form>
+
+        <h1 class="pb-2 border-bottom">Sistema de Gesitón de empleados</h1>
+        <a class="btn btn-primary mb-4" th:href="@{'/index/listaempleado'}">Empleados</a>
+        <a class="btn btn-primary mb-4" th:href="@{'/employee/lista'}">Historial</a>
+        <a class="btn btn-primary mb-4" th:href="@{'/employee/lista'}">Reportes</a>
+
+
+        <table class="table table-sm">
+            <tr>
+                <th># de usuario</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Puesto</th>
+                <th>Departamento</th>
+                <th>Ciudad</th>
+                <th>Número de teléfono</th>
+                <th>Salario</th>
+                <th>Boto de editar</th>
+
+            </tr>
+            <tr th:each="empleado, info : ${empleadoList}">
+                <td th:text="${empleado.employeeid}"></td>
+                <td th:text="${empleado.firstname}"></td>
+                <td th:text="${empleado.lastname}"></td>
+                <td th:text="${empleado.jobid}"></td>
+                <td th:text="${empleado.departmentid}"></td>
+                <td th:text="${empleado.phonenumber}"></td>
+                <td th:text="${empleado.salary}"></td>
+                <td th:text="${empleado.salary}"></td>
+                </td>
+                </td>
+            </tr>
+        </table>
+    </div>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+</body>
+</html>
