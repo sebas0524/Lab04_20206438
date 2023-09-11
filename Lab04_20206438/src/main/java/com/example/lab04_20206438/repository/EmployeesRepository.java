@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface EmployeesRepository extends JpaRepository<Employees,Integer> {
 
-    @Query(nativeQuery=true, value="SELECT * FROM employees where first_name=?1 or last_name=?2")
+    @Query(nativeQuery=true, value="SELECT * FROM employees where (first_name=?1 or last_name=?2)")
     List<Employees> buscarPorNombreApellido(String textoIngresado, String textoIngresado1);
 
 
